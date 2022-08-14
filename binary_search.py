@@ -1,20 +1,23 @@
-list1 = list(range(1, 10001))
-print(list1)
-item = 8753
+import math
+list1 = list(range(0, 10000 + 1, 2))
+item = 2200
 
 
 def binary_search(list, item):
+    check = 0
     low = 0
-    high = len(list) + 1
-    while True:
-        mid = int((low + high + 1) / 2)
-        x = list1[mid]
+    high = len(list) - 1
+
+    while low <= high:
+        check += 1
+        mid = math.floor((low + high) / 2)
+        x = list[mid]
         if x == item:
-            return list1[mid]
+            return mid
         if x > item:
-            high = x - 1
+            high = mid - 1
         else:
-            low = x - 1
+            low = mid + 1
 
 
 print(binary_search(list1, item))
